@@ -1,5 +1,11 @@
-import { Checkbox } from "@/components/ui/checkbox"
-import { Select, SelectItem, SelectTrigger, SelectValue, SelectContent } from "@/components/ui/select"
+import { Checkbox } from "@/components/ui/checkbox";
+import {
+  Select,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+} from "@/components/ui/select";
 import {
   Table,
   TableBody,
@@ -7,9 +13,9 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
-import { useStore } from "@/pages/grain"
-import dayjs from "dayjs"
+} from "@/components/ui/table";
+import { useStore } from "@/pages/grain";
+import dayjs from "dayjs";
 
 const grainList = [
   {
@@ -47,11 +53,11 @@ const grainList = [
     createdAt: "2024-11-21T14:22:13.211Z",
     weight: 100,
   },
-]
+];
 
 export default function GrainTable() {
-  const selectedItems = useStore((state) => state.selectedItems)
-  const toggleSelectedItem = useStore((state) => state.toggleSelectedItem)
+  const selectedItems = useStore((state) => state.selectedItems);
+  const toggleSelectedItem = useStore((state) => state.toggleSelectedItem);
 
   return (
     <Table>
@@ -66,19 +72,26 @@ export default function GrainTable() {
       </TableHeader>
       <TableBody>
         {grainList.map((grain, index) => {
-          const checked = selectedItems.includes(grain.id)
+          const checked = selectedItems.includes(grain.id);
 
-          return <TableRow key={grain.id}>
-            <TableCell>
-              <Checkbox checked={checked} onCheckedChange={() => toggleSelectedItem(grain.id)} />
-            </TableCell>
-            <TableCell>{index + 1}</TableCell>
-            <TableCell>{grain.typeName}</TableCell>
-            <TableCell>{dayjs(grain.createdAt).format('HH:mm DD/MM/YYYY')}</TableCell>
-            <TableCell>{grain.weight} Kg</TableCell>
-          </TableRow>
+          return (
+            <TableRow key={grain.id}>
+              <TableCell>
+                <Checkbox
+                  checked={checked}
+                  onCheckedChange={() => toggleSelectedItem(grain.id)}
+                />
+              </TableCell>
+              <TableCell>{index + 1}</TableCell>
+              <TableCell>{grain.typeName}</TableCell>
+              <TableCell>
+                {dayjs(grain.createdAt).format("HH:mm DD/MM/YYYY")}
+              </TableCell>
+              <TableCell>{grain.weight} Kg</TableCell>
+            </TableRow>
+          );
         })}
       </TableBody>
     </Table>
-  )
-}  
+  );
+}
