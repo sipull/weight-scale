@@ -17,14 +17,34 @@ import Link from "next/link";
 // Menu items.
 const items = [
   {
-    title: "Grain",
-    url: "/grain",
-    icon: Wheat,
+    label: "Hasil Timbang Material",
+    subMenu: [
+      {
+        title: "Gabah",
+        url: "/grain",
+        icon: Wheat,
+      },
+      {
+        title: "Beras",
+        url: "/rice",
+        icon: Bean,
+      },
+    ],
   },
   {
-    title: "Rice",
-    url: "/rice",
-    icon: Bean,
+    label: "Pengaturan",
+    subMenu: [
+      {
+        title: "Produk",
+        url: "/product",
+        icon: Wheat,
+      },
+      {
+        title: "Timbangan",
+        url: "/",
+        icon: Bean,
+      },
+    ],
   },
 ];
 
@@ -32,16 +52,14 @@ export default function AppSidebar() {
   return (
     <Sidebar>
       <SidebarHeader>
-        <div className="px-3 mt-4 font-bold mb-3">
-          PB.Bintang Mulia
-        </div>
+        <div className="px-3 mt-4 font-bold mb-3">PB.Bintang Mulia</div>
         <SidebarContent>
           <SidebarGroup className="py-0">
             <SidebarGroupContent>
               <SidebarMenu>
                 <SidebarMenuItem>
                   <SidebarMenuButton asChild>
-                    <Link href='/'>
+                    <Link href="/">
                       <House />
                       <span>Dashboard</span>
                     </Link>
@@ -50,23 +68,27 @@ export default function AppSidebar() {
               </SidebarMenu>
             </SidebarGroupContent>
           </SidebarGroup>
-          <SidebarGroup>
-            <SidebarGroupLabel>Weighing Scales</SidebarGroupLabel>
-            <SidebarGroupContent>
-              <SidebarMenu>
-                {items.map((item) => (
-                  <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton asChild>
-                      <Link href={item.url}>
-                        <item.icon />
-                        <span>{item.title}</span>
-                      </Link>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                ))}
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
+          {items.map((item) => {
+            return (
+              <SidebarGroup key={item.label}>
+                <SidebarGroupLabel>{item.label}</SidebarGroupLabel>
+                <SidebarGroupContent>
+                  <SidebarMenu>
+                    {item.subMenu.map((subMenu) => (
+                      <SidebarMenuItem key={subMenu.title}>
+                        <SidebarMenuButton asChild>
+                          <Link href={subMenu.url}>
+                            {/* {subMenu.icon} */}
+                            <span>{subMenu.title}</span>
+                          </Link>
+                        </SidebarMenuButton>
+                      </SidebarMenuItem>
+                    ))}
+                  </SidebarMenu>
+                </SidebarGroupContent>
+              </SidebarGroup>
+            );
+          })}
         </SidebarContent>
       </SidebarHeader>
     </Sidebar>

@@ -1,5 +1,5 @@
 import Layout from "@/src/components/common/layout";
-import GrainTable from "@/src/components/grain/table";
+import GrainTable from "@/src/components/product/table";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -45,7 +45,7 @@ export const useStore = create<State & Action>((set) => ({
 
 }))
 
-const DashboardPageGrain = () => {
+const DashboardProduct = () => {
     const date = useStore((state) => state.date);
     const setDate = useStore((state) => state.setDate);
     const selectedItems = useStore((state) => state.selectedItems);
@@ -53,7 +53,7 @@ const DashboardPageGrain = () => {
     return (
         <Layout>
             <div className="text-2xl mt-4 mb-6 font-semibold">
-                Gabah
+                Produk
             </div>
             <div className="bg-white px-3 py-4 rounded">
                 <div className="flex gap-4 mb-5 flex-wrap">
@@ -140,4 +140,4 @@ const DashboardPageGrain = () => {
     );
 };
 
-export default DashboardPageGrain;
+export default DashboardProduct;
