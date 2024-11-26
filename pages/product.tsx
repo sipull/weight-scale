@@ -1,5 +1,5 @@
 import Layout from "@/src/components/common/layout";
-import GrainTable from "@/src/components/product/table";
+import GrainTable, { InputWithLabel } from "@/src/components/product/table";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/pagination"
 import { create } from 'zustand'
 import { Select, SelectItem, SelectTrigger, SelectValue, SelectContent } from "@/components/ui/select"
+import { AddProductDialog } from "@/src/components/product/add-product-dialog";
 
 
 type State = {
@@ -57,55 +58,7 @@ const DashboardProduct = () => {
             </div>
             <div className="bg-white px-3 py-4 rounded">
                 <div className="flex gap-4 mb-5 flex-wrap">
-                    <div className="flex items-center gap-x-2">
-                        <div>Tanggal</div>
-                        <Popover>
-                            <PopoverTrigger asChild>
-                                <Button
-                                    variant={"outline"}
-                                    className={cn(
-                                        "w-[150px] pl-3 text-left font-normal",
-                                        !date && "text-muted-foreground"
-                                    )}
-                                >
-                                    {date ? (
-                                        dayjs(date).format('DD/MM/YYYY')
-                                    ) : (
-                                        <span>Pick a date</span>
-                                    )}
-                                    <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                                </Button>
-                            </PopoverTrigger>
-                            <PopoverContent className="w-auto p-0" align="start">
-                                <Calendar
-                                    mode="single"
-                                    selected={date.toDate()}
-                                    onSelect={(newDate) => {
-                                        setDate(dayjs(newDate))
-                                    }}
-                                    disabled={(date) =>
-                                        date > new Date() || date < new Date("1900-01-01")
-                                    }
-                                    initialFocus
-                                />
-                            </PopoverContent>
-                        </Popover>
-                    </div>
-
-                    {!!selectedItems.length && (
-                        <div className="flex items-center gap-x-2">
-                            <div>Update nama bahan</div>
-                            <Select defaultValue={undefined}>
-                                <SelectTrigger className="w-[280px]">
-                                    <SelectValue placeholder="Pilih nama bahan" />
-                                </SelectTrigger>
-                                <SelectContent>
-                                    <SelectItem value="rojolele">Rojolele</SelectItem>
-                                    <SelectItem value="pandanwangi">Pandanwangi</SelectItem>
-                                </SelectContent>
-                            </Select>
-                        </div>
-                    )}
+                    <AddProductDialog/>
                 </div>
 
                 <div className="bg-white rounded border mb-6">
