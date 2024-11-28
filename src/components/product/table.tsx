@@ -1,7 +1,6 @@
-import { Checkbox } from "@/components/ui/checkbox"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Select, SelectItem, SelectTrigger, SelectValue, SelectContent } from "@/components/ui/select"
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
   Table,
   TableBody,
@@ -9,73 +8,55 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
-import { useStore } from "@/pages/grain"
-import dayjs from "dayjs"
+} from "@/components/ui/table";
+import { useStore } from "@/pages/grain";
 
 const grainList = [
   {
     id: "INV001",
     type: "rojolele",
-    typeName: "Rojo lele",
-    createdAt: "2024-11-21T14:22:13.211Z",
-    weight: 100,
-  },
-  {
-    id: "INV002",
-    type: "rojolele",
-    typeName: "Rojo lele",
+    typeName: "Pandanwangi",
     createdAt: "2024-11-21T14:22:13.211Z",
     weight: 100,
   },
   {
     id: "INV003",
     type: "pandanwangi",
-    typeName: "pandanwangi",
+    typeName: "Kemangi",
     createdAt: "2024-11-21T14:22:13.211Z",
     weight: 100,
   },
-]
-
-export function InputWithLabel() {
-  return (
-    <div className="grid w-full max-w-sm items-center gap-1.5">
-      <Label htmlFor="email">Email</Label>
-      <Input type="email" id="email" placeholder="Email" />
-    </div>
-  )
-}
+];
 
 export default function GrainTable() {
-  const selectedItems = useStore((state) => state.selectedItems)
-  const toggleSelectedItem = useStore((state) => state.toggleSelectedItem)
-
+  const selectedItems = useStore((state) => state.selectedItems);
   return (
     <Table>
       <TableHeader>
         <TableRow>
-          <TableHead className="w-[50px]">#</TableHead>
           <TableHead className="w-[100px]">No</TableHead>
           <TableHead className="w-[400px]">Nama Bahan</TableHead>
-          <TableHead>Jam, Tanggal</TableHead>
-          <TableHead>Berat</TableHead>
+          <TableHead className=" w-[150px] text-center">Action</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
         {grainList.map((grain, index) => {
-          const checked = selectedItems.includes(grain.id)
+          const checked = selectedItems.includes(grain.id);
 
-          return <TableRow key={grain.id}>
-            <TableCell>
-              <Checkbox checked={checked} onCheckedChange={() => toggleSelectedItem(grain.id)} />
-            </TableCell>
-            <TableCell>{index + 1}</TableCell>
-            <TableCell>{grain.typeName}</TableCell>
-            <TableCell>{dayjs(grain.createdAt).format('HH:mm DD/MM/YYYY')}</TableCell>
-            <TableCell>{grain.weight} Kg</TableCell>
-          </TableRow>
+          return (
+            <TableRow key={grain.id}>
+              <TableCell>{index + 1}</TableCell>
+              <TableCell>{grain.typeName}</TableCell>
+              <TableCell>
+                <div className="space-x-3 flex justify-center">
+                  <Button size="sm">Update</Button>
+                  <Button variant="destructive" size="sm">Delete</Button>
+                </div>
+              </TableCell>
+            </TableRow>
+          );
         })}
       </TableBody>
     </Table>
-  )
-}  
+  );
+}

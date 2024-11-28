@@ -1,10 +1,5 @@
 import Layout from "@/src/components/common/layout";
-import GrainTable, { InputWithLabel } from "@/src/components/product/table";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { CalendarIcon } from "lucide-react";
-import { Calendar } from "@/components/ui/calendar";
+import GrainTable from "@/src/components/product/table";
 import dayjs, { Dayjs } from "dayjs";
 import {
     Pagination,
@@ -16,7 +11,6 @@ import {
     PaginationPrevious,
 } from "@/components/ui/pagination"
 import { create } from 'zustand'
-import { Select, SelectItem, SelectTrigger, SelectValue, SelectContent } from "@/components/ui/select"
 import { AddProductDialog } from "@/src/components/product/add-product-dialog";
 
 
@@ -47,10 +41,6 @@ export const useStore = create<State & Action>((set) => ({
 }))
 
 const DashboardProduct = () => {
-    const date = useStore((state) => state.date);
-    const setDate = useStore((state) => state.setDate);
-    const selectedItems = useStore((state) => state.selectedItems);
-
     return (
         <Layout>
             <div className="text-2xl mt-4 mb-6 font-semibold">
