@@ -1,5 +1,5 @@
 import Layout from "@/src/components/common/layout";
-import GrainTable from "@/src/components/product/table";
+import ProductTable from "@/src/components/product/table";
 import dayjs, { Dayjs } from "dayjs";
 import {
     Pagination,
@@ -52,7 +52,7 @@ const DashboardProduct = () => {
                 </div>
 
                 <div className="bg-white rounded border mb-6">
-                    <GrainTable />
+                    <ProductTable />
                 </div>
 
                 <Pagination>

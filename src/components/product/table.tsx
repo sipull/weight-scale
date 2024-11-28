@@ -1,6 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import {
   Table,
   TableBody,
@@ -10,6 +8,8 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { useStore } from "@/pages/grain";
+import { AlertDelete } from "./alert-dialog-delete";
+import { UpdateProductDialog } from "./dialog-update";
 
 const grainList = [
   {
@@ -28,7 +28,7 @@ const grainList = [
   },
 ];
 
-export default function GrainTable() {
+export default function ProductTable() {
   const selectedItems = useStore((state) => state.selectedItems);
   return (
     <Table>
@@ -49,8 +49,8 @@ export default function GrainTable() {
               <TableCell>{grain.typeName}</TableCell>
               <TableCell>
                 <div className="space-x-3 flex justify-center">
-                  <Button size="sm">Update</Button>
-                  <Button variant="destructive" size="sm">Delete</Button>
+                  <UpdateProductDialog />
+                  <AlertDelete />
                 </div>
               </TableCell>
             </TableRow>
