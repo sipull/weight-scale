@@ -41,7 +41,7 @@ const items = [
       },
       {
         title: "Timbangan",
-        url: "/",
+        url: "/scale",
         icon: Bean,
       },
     ],
@@ -78,8 +78,10 @@ export default function AppSidebar() {
                       <SidebarMenuItem key={subMenu.title}>
                         <SidebarMenuButton asChild>
                           <Link href={subMenu.url}>
-                            {/* {subMenu.icon} */}
-                            <span>{subMenu.title}</span>
+                            <span>
+                              {/* {subMenu.icon} */}
+                              {subMenu.title}
+                            </span>
                           </Link>
                         </SidebarMenuButton>
                       </SidebarMenuItem>

@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { PieChart, Pie, Sector, ResponsiveContainer, Cell } from 'recharts';
 
 const data = [
-    { name: 'Grain', value: 400 },
-    { name: 'Rice', value: 300 },
+    { name: 'Grain', value: 400, color: '#FFBB28' },
+    { name: 'Rice', value: 300, color: '#00C49F' },
 ];
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
@@ -72,13 +72,12 @@ const ChartPiePerYear = () => {
                     cy="50%"
                     innerRadius={60}
                     outerRadius={80}
-                    fill="#8884d8"
                     dataKey="value"
-                    onMouseEnter={onPieEnter}
-                />
-                {data.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                ))}
+                    onMouseEnter={onPieEnter}>
+                    {data.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={entry.color} />
+                    ))}
+                </Pie>
             </PieChart>
         </ResponsiveContainer>
     );

@@ -20,29 +20,29 @@ import dayjs from "dayjs";
 const grainList = [
   {
     id: "INV001",
-    type: "rojolele",
-    typeName: "Rojo lele",
+    type: "Rokan",
+    typeName: "Rokan",
     createdAt: "2024-11-21T14:22:13.211Z",
     weight: 100,
   },
   {
     id: "INV002",
-    type: "rojolele",
-    typeName: "Rojo lele",
+    type: "Rokan",
+    typeName: "Rokan",
     createdAt: "2024-11-21T14:22:13.211Z",
     weight: 100,
   },
   {
     id: "INV003",
-    type: "pandanwangi",
-    typeName: "pandanwangi",
+    type: "Pandanwangi",
+    typeName: "Pandanwangi",
     createdAt: "2024-11-21T14:22:13.211Z",
     weight: 100,
   },
   {
     id: "INV004",
-    type: "pandanwangi",
-    typeName: "pandanwangi",
+    type: "Pandanwangi",
+    typeName: "Pandanwangi",
     createdAt: "2024-11-21T14:22:13.211Z",
     weight: 100,
   },
@@ -63,7 +63,9 @@ export default function GrainTable() {
     <Table>
       <TableHeader>
         <TableRow>
-          <TableHead className="w-[50px]">#</TableHead>
+          <TableHead className="w-[50px]">
+            <Checkbox />
+          </TableHead>
           <TableHead className="w-[100px]">No</TableHead>
           <TableHead className="w-[400px]">Nama Bahan</TableHead>
           <TableHead>Jam, Tanggal</TableHead>

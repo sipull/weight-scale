@@ -11,11 +11,11 @@ const chartData = [
 const chartConfig = {
     grain: {
         label: "Grain",
-        color: "#2563eb",
+        color: "#FFBB28",
     },
     rice: {
         label: "Rice",
-        color: "#60a5fa",
+        color: "#00C49F",
     },
 } satisfies ChartConfig
 
