@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/table";
 import { useStore } from "@/pages/grain";
 import dayjs from "dayjs";
+import { useState } from "react";
 
 const grainList = [
   {

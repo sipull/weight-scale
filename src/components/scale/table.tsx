@@ -11,6 +11,7 @@ import { useStore } from "@/pages/grain";
 import { AlertDelete } from "./alert-dialog-delete";
 import { UpdateProductDialog } from "./dialog-update";
 import dayjs from "dayjs";
+import useScalesQuery from "@/src/queries/useScalesQuery";
 
 const grainList = [
   {
@@ -30,7 +31,8 @@ const grainList = [
 ];
 
 export default function ProductTable() {
-  const selectedItems = useStore((state) => state.selectedItems);
+  const { data } = useScalesQuery();
+
   return (
     <Table>
       <TableHeader>
@@ -43,9 +45,7 @@ export default function ProductTable() {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {grainList.map((grain, index) => {
-          const checked = selectedItems.includes(grain.id);
-
+        {data?.scales?.map((grain, index) => {
           return (
             <TableRow key={grain.id}>
               <TableCell>{index + 1}</TableCell>
